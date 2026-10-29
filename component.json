@@ -1,23 +1,12 @@
 {
+  "SPDX-FileCopyrightText": "2026 roolrz",
+  "SPDX-License-Identifier": "Apache-2.0",
   "version": 1,
-  "name": "tool-args",
+  "name": "lib-tool-args",
   "kind": "library",
   "origin": {
     "repository": "https://github.com/roolrz/HypeR",
     "commit": "8d42d047058a2b58a291803700e86487fb723f7a"
-  },
-  "sources": {
-    "Cargo.toml": "lib/tool-args/Cargo.toml",
-    "component.mk": "lib/tool-args/component.mk",
-    "shared/Cargo.toml": "lib/tool-args/shared/Cargo.toml",
-    "shared/src/lib.rs": "lib/tool-args/shared/src/lib.rs",
-    "src/lib.rs": "lib/tool-args/src/lib.rs",
-    "tests/selectors.rs": "lib/tool-args/tests/selectors.rs"
-  },
-  "SPDX-FileCopyrightText": "2026 roolrz",
-  "SPDX-License-Identifier": "Apache-2.0",
-  "mounts": {
-    "": "lib/tool-args"
   },
   "packages": [
     "hyper-tool-args",
@@ -29,35 +18,5 @@
       "app-test",
       "APP_TEST_PACKAGE=hyper-tool-args"
     ]
-  ],
-  "cargo_context": {
-    "Cargo.toml": {
-      "workspace": null,
-      "membership": "../../app",
-      "dependency_paths": {
-        "target.cfg(target_os = \"hyper\")/dependencies/hyper-clap-shared": "lib/clap"
-      },
-      "inherited_dependencies": {
-        "/dependencies/clap": {
-          "workspace": true
-        },
-        "target.cfg(target_os = \"hyper\")/dependencies/hyper-clap-shared": {
-          "workspace": true
-        }
-      }
-    },
-    "shared/Cargo.toml": {
-      "workspace": null,
-      "membership": "../../../app",
-      "dependency_paths": {
-        "/dependencies/implementation": "lib/tool-args",
-        "/dependencies/hyper-rust-std": "stdlib/rust-std"
-      },
-      "inherited_dependencies": {
-        "/dependencies/hyper-rust-std": {
-          "workspace": true
-        }
-      }
-    }
-  }
+  ]
 }

@@ -1,20 +1,24 @@
 # SPDX-FileCopyrightText: 2026 roolrz
 # SPDX-License-Identifier: Apache-2.0
 
+
 [package]
 name = "hyper-tool-args"
 version = "0.0.0"
 edition = "2024"
 license = "Apache-2.0"
-repository = "https://github.com/HypeR-Proj/tool-args"
+repository = "https://github.com/HypeR-Proj/lib-tool-args"
 publish = false
 autotests = false
+workspace = "../../app"
+
+[dependencies]
 
 [dependencies.clap]
-version = "=4.6.6"
-features = [
-    "derive",
-]
+workspace = true
+features = ["derive"]
+
+[lints]
 
 [lints.clippy]
 doc_markdown = "deny"
@@ -33,16 +37,13 @@ unsafe_op_in_unsafe_fn = "deny"
 
 [lints.rust.unexpected_cfgs]
 level = "warn"
-check-cfg = [
-    "cfg(target_os, values(\"hyper\"))",
-]
+check-cfg = ["cfg(target_os, values(\"hyper\"))"]
+
+[target]
+
+[target."cfg(target_os = \"hyper\")"]
+
+[target."cfg(target_os = \"hyper\")".dependencies]
 
 [target."cfg(target_os = \"hyper\")".dependencies.hyper-clap-shared]
-version = "=0.0.0"
-
-[workspace]
-members = [
-    ".",
-    "shared",
-]
-resolver = "3"
+workspace = true
