@@ -3,19 +3,46 @@
 
 [package]
 name = "hyper-tool-args"
-workspace = "../../app"
-version.workspace = true
-edition.workspace = true
-license.workspace = true
-repository.workspace = true
-publish.workspace = true
+version = "0.0.0"
+edition = "2024"
+license = "Apache-2.0"
+repository = "https://github.com/HypeR-Proj/tool-args"
+publish = false
 autotests = false
 
-[dependencies]
-clap.workspace = true
+[dependencies.clap]
+version = "=4.6.6"
+features = [
+    "derive",
+]
 
-[lints]
-workspace = true
+[lints.clippy]
+doc_markdown = "deny"
+empty_docs = "deny"
+expect_used = "deny"
+panic = "deny"
+todo = "deny"
+undocumented_unsafe_blocks = "deny"
+unimplemented = "deny"
+unreachable = "deny"
+unwrap_used = "deny"
+missing_safety_doc = "deny"
 
-[target.'cfg(target_os = "hyper")'.dependencies]
-hyper-clap-shared.workspace = true
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = [
+    "cfg(target_os, values(\"hyper\"))",
+]
+
+[target."cfg(target_os = \"hyper\")".dependencies.hyper-clap-shared]
+version = "=0.0.0"
+
+[workspace]
+members = [
+    ".",
+    "shared",
+]
+resolver = "3"

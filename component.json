@@ -29,5 +29,35 @@
       "app-test",
       "APP_TEST_PACKAGE=hyper-tool-args"
     ]
-  ]
+  ],
+  "cargo_context": {
+    "Cargo.toml": {
+      "workspace": null,
+      "membership": "../../app",
+      "dependency_paths": {
+        "target.cfg(target_os = \"hyper\")/dependencies/hyper-clap-shared": "lib/clap"
+      },
+      "inherited_dependencies": {
+        "/dependencies/clap": {
+          "workspace": true
+        },
+        "target.cfg(target_os = \"hyper\")/dependencies/hyper-clap-shared": {
+          "workspace": true
+        }
+      }
+    },
+    "shared/Cargo.toml": {
+      "workspace": null,
+      "membership": "../../../app",
+      "dependency_paths": {
+        "/dependencies/implementation": "lib/tool-args",
+        "/dependencies/hyper-rust-std": "stdlib/rust-std"
+      },
+      "inherited_dependencies": {
+        "/dependencies/hyper-rust-std": {
+          "workspace": true
+        }
+      }
+    }
+  }
 }
