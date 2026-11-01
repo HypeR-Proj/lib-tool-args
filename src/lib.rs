@@ -7,8 +7,6 @@
 //! This library carries no inspection authority.
 
 // Select the shared parser implementation for Native delivery.
-#[cfg(target_os = "hyper")]
-extern crate hyper_clap_shared as _;
 
 use clap::Args;
 use std::num::NonZeroU64;
@@ -69,3 +67,6 @@ pub fn parse_interval(value: &str) -> Result<f64, String> {
 #[cfg(test)]
 #[path = "../tests/selectors.rs"]
 mod tests;
+
+#[cfg(target_os = "hyper")]
+extern crate hyper_clap_shared as clap;
